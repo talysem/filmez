@@ -10,3 +10,5 @@ function changeFlow() {
         flow.style.rotate = '90deg'
     }
 }
+
+window.onload = console.log('teste')
