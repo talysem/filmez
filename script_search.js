@@ -1,36 +1,30 @@
-function searchResults(command) {
-    let content_topo = document.querySelector('#content_topo');
+function search() {
+    let searchValue = document.querySelector('#search').value.toLowerCase(); // Obtém o texto digitado e converte para minúsculas
+    let items = document.querySelectorAll('.item'); // Seleciona todos os elementos com a classe "item"
+    let foundedItens = 0
+    let buscaExiste = true
 
-    if (content_topo) { // Verifica se o elemento existe
-        if (command === 'ativar') {
-            content_topo.classList.add('searchResults');
-        } else if (command === 'desativar') {
-            content_topo.classList.remove('searchResults');
-        } else {
-            console.warn('Comando inválido:', command); // Aviso caso o comando seja inesperado
+    if (searchValue === '') {
+        items.forEach(element => {
+            element.style.display = 'flex';
+        });
+    } else {
+        for (let i = 0; i < items.length; i++) {
+            let title = items[i].querySelector('h2').textContent.toLowerCase(); // Obtém o texto do título e converte para minúsculas
+
+            if (title.includes(searchValue)) {
+                items[i].style.display = 'flex'; // Exibe o item se corresponder à busca
+                foundedItens++
+                buscaExiste = true
+            } else {
+                items[i].style.display = 'none'; // Esconde o item se não corresponder
+                buscaExiste = false
+            }
         }
-    } else {
-        console.error('Elemento #content_topo não encontrado no DOM.');
     }
-}
 
-function noResultsFound(command) {
-    let content_noSearch = document.querySelector('#content_noSearch')
-    let content_topo = document.querySelector('#content_topo')
-
-    if (command == 'noSearch') {
-        content_noSearch.style.display = 'flex'
-        content_topo.style.display = 'none'
-        console.warn('não foi encontrado')
-    } else {
-        content_noSearch.style.display = 'none'
-        content_topo.style.display = 'flex'
+    if (foundedItens == 0 && buscaExiste == false) {
+        console.log('nenhum item encontrado')
     }
-}
 
-function callbackSearch() {
-    let valueSearch = document.querySelector('#search').value;
-    let searchName = document.querySelector('#searchName')
-
-    searchName.innerHTML = '"' + valueSearch + '"'
 }

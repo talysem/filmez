@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resenhaz</title>
+    <title>Filmez</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon-filmes.png">
+
+    <link rel="stylesheet" href="styles_general.css">
+    <link rel="stylesheet" href="styles_header.css">
+    <link rel="stylesheet" href="styles_content.css">
+
+
     <script src="script_general.js" defer></script>
     <script src="script_header.js" defer></script>
     <script src="script_search.js" defer></script>
@@ -14,124 +20,244 @@
 
 <body>
 
+    <div id="searchAlert">
+        <p>Revise sua busca e tente novamente.</p>
+    </div>
+
     <div id="header">
-        <div id="fakeSearch">
-            <input type="text" id="search" placeholder="Busque aqui..." oninput="checkVazio(this)" autocomplete="off">
-            <div id="sugestoes">
-                <div class="sugestao" onclick="getThisSugestion(this)">Gente grande</div>
-                <div class="sugestao" onclick="getThisSugestion(this)">As branquelas</div>
-                <div class="sugestao" onclick="getThisSugestion(this)">Todo mundo em pânico</div>
-                <div class="sugestao" onclick="getThisSugestion(this)">Deu a louca na chapeuzinho</div>
-                <div class="sugestao" onclick="getThisSugestion(this)">Carros 2</div>
+
+        <div>
+            <div class="header_item">
+                <h1>Filmez</h1>
             </div>
-            <div id="searchAlert">
-                <p>Preencha o campo.</p>
+
+            <div id="fakeSelect">
+                <svg width="auto" height="auto" viewBox="0 0 21 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.08588 11.6924L1.30771 3.91421C0.526662 3.13317 0.526662 1.86683 1.30771 1.08579C2.08876 0.304738 3.35509 0.304738 4.13614 1.08579L10.5001 7.44975L16.8641 1.08579C17.6451 0.304738 18.9114 0.304738 19.6925 1.08579C20.4735 1.86683 20.4735 3.13317 19.6925 3.91421L11.9143 11.6924C11.1333 12.4734 9.86693 12.4734 9.08588 11.6924Z"
+                        fill="#D9D9D9" />
+                </svg>
+
+                <select name="" id="sugestoes" class="header_item" onchange="teste(this)">
+                    <option value="sugestao" selected disabled>Sugestões</option>
+                    <optgroup label="Mais vistos:">
+                        <option value="1">Opção 1</option>
+                        <option value="2">Opção 2</option>
+                        <option value="3">Opção 3</option>
+                    </optgroup>
+                    <optgroup label="Últimos adicionados:">
+                        <option value="4">Opção 4</option>
+                        <option value="5">Opção 5</option>
+                        <option value="6">Opção 6</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
-        <button onclick="search()">Buscar</button>
+
+        <div id="fakeSearch">
+            <input type="text" id="search" placeholder="Busque aqui..." autocomplete="off" oninput="search()">
+            <button onclick="search()">
+                <svg width="auto" height="auto" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M5.43109 1.26725C2.11649 2.30901 -0.00517083 5.24639 -0.00829736 8.79782C-0.0114239 12.3185 2.13009 15.2618 5.43922 16.2845C7.35875 16.8777 10.1532 16.5963 11.6796 15.6562C12.2813 15.2855 12.3403 15.2754 12.3403 15.5422C12.3403 15.6531 13.5232 16.9193 14.9692 18.3561L17.598 20.9686H18.3423C18.9563 20.9686 19.1663 20.8887 19.5433 20.5117C19.9204 20.1346 20.0003 19.9247 20.0003 19.3106V18.5664L17.3877 15.9376C15.9509 14.4915 14.6847 13.3086 14.5738 13.3086C14.307 13.3086 14.3172 13.2497 14.6878 12.648C15.628 11.1216 15.9093 8.32712 15.3161 6.40758C14.5638 3.97373 12.6116 2.01856 10.1856 1.26913C8.89075 0.869244 6.7003 0.868306 5.43109 1.26725ZM6.71953 3.15536C4.88691 3.53164 3.13684 4.99721 2.48152 6.70429C1.70895 8.71715 2.15026 11.0045 3.62176 12.6145C6.82833 16.1231 12.3928 14.5425 13.4419 9.82504C13.8483 7.99727 13.1352 5.95095 11.6038 4.55136C10.3154 3.37375 8.36737 2.81707 6.71953 3.15536Z"
+                        fill="black" />
+                </svg>
+            </button>
+        </div>
     </div>
 
     <div id="content_body">
 
         <div id="content_topo">
-            <div id="title">
-                <h1>Resenhaz</h1>
-                <p>Opiniões totalmente enviesadas sobre filmes de comédia</p>
-            </div>
 
-            <div id="searchResults">
-                <h2>
-                    Resultados para a busca:&nbsp;<span id="searchName"></span>
-                </h2>
-            </div>
-
-            <div id="flow" onclick="changeFlow()">
-                <svg width="auto" height="auto" viewBox="0 0 129 129" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <rect x="0.0908203" y="0.136353" width="128" height="128" fill="url(#pattern0_2_2)" />
-                    <defs>
-                        <pattern id="pattern0_2_2" patternContentUnits="objectBoundingBox" width="1" height="1">
-                            <use xlink:href="#image0_2_2" transform="scale(0.0078125)" />
-                        </pattern>
-                        <image id="image0_2_2" width="128" height="128"
-                            xlink:href="data:image/png;base64,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" />
-                    </defs>
-                </svg>
-
-            </div>
         </div>
 
         <div id="content" class="">
 
             <div class="item">
-                <img src="https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg" alt="">
+                <img src="https://sm.ign.com/t/ign_br/screenshot/default/dr-upuaw4aebypb_93kf.960.jpg" alt="">
 
-                <h2>
-                    Gente grande
-                </h2>
+                <div class="itemDescription">
+                    <h2>
+                        Dumbo
+                    </h2>
+
+                    
+                    <div class="itemTags">
+                        <p>Ficção Científica</p>
+
+                        <p>192 min</p>
+                    </div>
+
+                    <p class="itemResume">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non incidunt nihil natus
+                        reiciendis harum odio consequuntur! Obcaecati, vero quia!
+                    </p>
+
+                    <div class="itemCTA">
+                        <p>Ver mais</p>
+                    </div>
+                </div>
             </div>
 
             <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiAyFkxkK-JiVvgORqcIZDsI1kruaY1raoOg&s"
+                <img src="https://www.guiadasemana.com.br/contentFiles/system/pictures/2013/2/68108/cropped/novo-poster.jpg"
                     alt="">
 
-                <h2>
-                    As branquelas
-                </h2>
+                <div class="itemDescription">
+                    <h2>
+                        Homem de Ferro 3
+                    </h2>
+
+                    
+                    <div class="itemTags">
+                        <p>Ficção Científica</p>
+
+                        <p>192 min</p>
+                    </div>
+
+                    <p class="itemResume">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non incidunt nihil natus
+                        reiciendis harum odio consequuntur! Obcaecati, vero quia!
+                    </p>
+
+                    <div class="itemCTA">
+                        <p>Ver mais</p>
+                    </div>
+                </div>
             </div>
 
             <div class="item">
-                <img src="https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg" alt="">
+                <img src="https://www.europanet.com.br/posteres-filmes-series/img/capas/107168.jpg" alt="">
 
-                <h2>
-                    Gente grande
-                </h2>
+                <div class="itemDescription">
+                    <h2>
+                        Avatar: The Way of Water
+                    </h2>
+
+                    <div class="itemTags">
+                        <p>Ficção Científica</p>
+
+                        <p>192 min</p>
+                    </div>
+
+                    <p class="itemResume">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non incidunt nihil natus
+                        reiciendis harum odio consequuntur! Obcaecati, vero quia!
+                    </p>
+
+                    <div class="itemCTA">
+                        <p>Ver mais</p>
+                    </div>
+                </div>
             </div>
 
             <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiAyFkxkK-JiVvgORqcIZDsI1kruaY1raoOg&s"
+                <img src="https://www.designi.com.br/images/preview/10236768.jpg" alt="">
+
+                <div class="itemDescription">
+                    <h2>
+                        Interestelar
+                    </h2>
+
+                    
+                    <div class="itemTags">
+                        <p>Ficção Científica</p>
+
+                        <p>192 min</p>
+                    </div>
+
+                    <p class="itemResume">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non incidunt nihil natus
+                        reiciendis harum odio consequuntur! Obcaecati, vero quia!
+                    </p>
+
+                    <div class="itemCTA">
+                        <p>Ver mais</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://www.europanet.com.br/upload/id_produto/107___/107344g.jpg" alt="">
+
+                <div class="itemDescription">
+                    <h2>
+                        Barbie
+                    </h2>
+
+                    
+                    <div class="itemTags">
+                        <p>Ficção Científica</p>
+
+                        <p>192 min</p>
+                    </div>
+
+                    <p class="itemResume">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non incidunt nihil natus
+                        reiciendis harum odio consequuntur! Obcaecati, vero quia!
+                    </p>
+
+                    <div class="itemCTA">
+                        <p>Ver mais</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="https://images.squarespace-cdn.com/content/v1/540e5d44e4b03111c0805763/5988ddd5-0d1b-40af-b14e-8c56720270be/BR_BRAZIL_JOKER2_INSTA_VERT_TSR_STANDARD_1638x2048_INTL.jpg"
                     alt="">
 
-                <h2>
-                    As branquelas
-                </h2>
+                <div class="itemDescription">
+                    <h2>
+                        Coringa: Delírio a dois
+                    </h2>
+
+                    
+                    <div class="itemTags">
+                        <p>Ficção Científica</p>
+
+                        <p>192 min</p>
+                    </div>
+
+                    <p class="itemResume">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non incidunt nihil natus
+                        reiciendis harum odio consequuntur! Obcaecati, vero quia!
+                    </p>
+
+                    <div class="itemCTA">
+                        <p>Ver mais</p>
+                    </div>
+                </div>
             </div>
 
             <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiAyFkxkK-JiVvgORqcIZDsI1kruaY1raoOg&s"
+                <img src="https://uauposters.com.br/media/catalog/product/2/5/259420220222-uau-posters-the-batman-filmes-7.jpg"
                     alt="">
 
-                <h2>
-                    Todo mundo em pânico
-                </h2>
+                <div class="itemDescription">
+                    <h2>
+                        Batman
+                    </h2>
+
+                    
+                    <div class="itemTags">
+                        <p>Ficção Científica</p>
+
+                        <p>192 min</p>
+                    </div>
+
+                    <p class="itemResume">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non incidunt nihil natus
+                        reiciendis harum odio consequuntur! Obcaecati, vero quia!
+                    </p>
+
+                    <div class="itemCTA">
+                        <p>Ver mais</p>
+                    </div>
+                </div>
             </div>
 
-            <div class="item">
-                <img src="https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg" alt="">
-
-                <h2>
-                    Click
-                </h2>
-            </div>
-
-            <div class="item">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiAyFkxkK-JiVvgORqcIZDsI1kruaY1raoOg&s"
-                    alt="">
-
-                <h2>
-                    Deu a louca na chapeuzinho vermelho
-                </h2>
-            </div>
-
-        </div>
-
-        <div id="content_noSearch">
-            <p>
-                Poxa, parece que ainda não temos essa avaliação :(
-            </p>
-            <p>
-                Revise a pesquisa e tente novamente.
-            </p>
         </div>
 
     </div>
