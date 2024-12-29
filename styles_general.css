@@ -3,9 +3,10 @@ body {
     background-color: #fff;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 50px;
+    padding-bottom: 50px;
 }
 
 * {
@@ -27,4 +28,16 @@ img {
     --gapItens: 20px;
     --totalGap: calc(var(--gapItens) * calc(var(--numeroItens) - 1));
     --widthItens: calc(calc(100% / var(--numeroItens)) - calc(var(--totalGap) / var(--numeroItens)))
+}
+
+@media (width <= 700px) {
+    :root {
+        --numeroItens: 2;
+    }
+}
+
+@media (width <= 420px) {
+    :root {
+        --numeroItens: 1;
+    }
 }

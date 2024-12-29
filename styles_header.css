@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(0deg, rgba(150,0,0,1) 0%, rgba(255,0,0,1) 100%);
+    background: linear-gradient(0deg, rgba(150, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 100%);
     color: #FFF;
     font-weight: 400;
     position: absolute;
@@ -19,7 +19,7 @@
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(0deg, rgba(150,150,150,1) 0%, rgba(220,220,220,1) 100%);
+    background: linear-gradient(0deg, rgba(150, 150, 150, 1) 0%, rgba(220, 220, 220, 1) 100%);
     position: sticky;
     top: 10px;
     border-radius: 6px;
@@ -75,9 +75,12 @@
 }
 
 #sugestoes {
-    appearance: none; /* Para navegadores modernos */
-    -webkit-appearance: none; /* Para navegadores baseados no WebKit (Chrome, Safari) */
-    -moz-appearance: none; /* Para Firefox */
+    appearance: none;
+    /* Para navegadores modernos */
+    -webkit-appearance: none;
+    /* Para navegadores baseados no WebKit (Chrome, Safari) */
+    -moz-appearance: none;
+    /* Para Firefox */
     background-color: unset;
     border: none;
     font-size: 16px;
@@ -97,7 +100,7 @@
 }
 
 #fakeSelect:hover {
-    background: linear-gradient(0deg, rgba(80,80,80,1) 0%, rgba(17,17,17,1) 100%);
+    background: linear-gradient(0deg, rgba(80, 80, 80, 1) 0%, rgba(17, 17, 17, 1) 100%);
 }
 
 #fakeSelect:hover svg path {
@@ -145,4 +148,91 @@
 
 #fakeSearch>button>svg {
     width: 16px;
+}
+
+#cleanSearch {
+    width: 30px;
+    height: 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+@media (width <=700px) {
+    #fakeSearch>input {
+        padding: 10px;
+        padding-left: 40px;
+    }
+}
+
+@media (width <=580px) {
+    #header {
+        padding: 7px 20px;
+    }
+
+    .header_item {
+        padding: 10px;
+        padding-right: 35px;
+    }
+
+    #header>div:first-of-type {
+        gap: 20px;
+    }
+
+    #header>div>.header_item:first-of-type {
+        padding: 10px 0;
+    }
+
+    #fakeSearch>input {
+        padding: 7px;
+        padding-left: 40px;
+        width: 100%;
+    }
+
+    #fakeSearch {
+        max-width: 180px;
+    }
+}
+
+@media (width <= 460px) {
+    .header_item {
+        & h1 {
+            font-size: 13px;
+        }
+    }
+
+    #sugestoes,
+    #fakeSearch>input {
+        font-size: 13px;
+    }
+
+    #fakeSearch>button>svg {
+        width: 12px;
+    }
+
+    #fakeSearch>button {
+        width: 32px;
+        height: 32px;
+    }
+
+    #fakeSearch>input {
+        padding-left: 32px;
+    }
+
+    #header {
+        padding: 5px 10px;
+    }
+
+    #header>div:first-of-type {
+        gap: 10px;
+    }
+}
+
+@media (width <= 390px) {
+    #fakeSelect {
+        display: none;
+    }
 }

@@ -41,14 +41,14 @@
                 <select name="" id="sugestoes" class="header_item" onchange="teste(this)">
                     <option value="sugestao" selected disabled>Sugestões</option>
                     <optgroup label="Mais vistos:">
-                        <option value="1">Opção 1</option>
-                        <option value="2">Opção 2</option>
-                        <option value="3">Opção 3</option>
+                        <option value="Gente Grande">Gente Grande</option>
+                        <option value="Homem de Ferro 3">Homem de Ferro 3</option>
+                        <option value="Avatar">Avatar</option>
                     </optgroup>
                     <optgroup label="Últimos adicionados:">
-                        <option value="4">Opção 4</option>
-                        <option value="5">Opção 5</option>
-                        <option value="6">Opção 6</option>
+                        <option value="Interestelar">Interestelar</option>
+                        <option value="Dumbo">Dumbo</option>
+                        <option value="Coringa">Coringa</option>
                     </optgroup>
                 </select>
             </div>
@@ -63,6 +63,13 @@
                         fill="black" />
                 </svg>
             </button>
+            <div id="cleanSearch" onclick="cleanSearch()">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.17458 11L0 1.83107L1.82542 0.00678158L11 9.17571L9.17458 11ZM1.82542 10.9932L3.79665e-07 9.16893L9.17458 0L11 1.82429L1.82542 10.9932Z"
+                        fill="black" />
+                </svg>
+            </div>
         </div>
     </div>
 
@@ -74,7 +81,7 @@
 
         <div id="content" class="">
 
-            <div class="item">
+            <div class="item activeView">
                 <img src="https://sm.ign.com/t/ign_br/screenshot/default/dr-upuaw4aebypb_93kf.960.jpg" alt="">
 
                 <div class="itemDescription">
@@ -82,7 +89,7 @@
                         Dumbo
                     </h2>
 
-                    
+
                     <div class="itemTags">
                         <p>Ficção Científica</p>
 
@@ -109,7 +116,7 @@
                         Homem de Ferro 3
                     </h2>
 
-                    
+
                     <div class="itemTags">
                         <p>Ficção Científica</p>
 
@@ -160,7 +167,7 @@
                         Interestelar
                     </h2>
 
-                    
+
                     <div class="itemTags">
                         <p>Ficção Científica</p>
 
@@ -186,7 +193,7 @@
                         Barbie
                     </h2>
 
-                    
+
                     <div class="itemTags">
                         <p>Ficção Científica</p>
 
@@ -213,7 +220,7 @@
                         Coringa: Delírio a dois
                     </h2>
 
-                    
+
                     <div class="itemTags">
                         <p>Ficção Científica</p>
 
@@ -240,7 +247,7 @@
                         Batman
                     </h2>
 
-                    
+
                     <div class="itemTags">
                         <p>Ficção Científica</p>
 
@@ -259,6 +266,15 @@
             </div>
 
         </div>
+
+        <div id="noSearch">
+            <h3>Poxa, busca não localizada :&#40;</h3>
+            <p>Revise sua busca e tente novamente...</p>
+        </div>
+
+        <a href="/viewPage.html">
+            teste
+        </a>
 
     </div>
 

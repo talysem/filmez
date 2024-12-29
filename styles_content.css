@@ -1,6 +1,7 @@
 #content_body {
     width: calc(100% - 50px);
     max-width: 950px;
+    min-height: 101dvh;
 }
 
 #content {
@@ -43,13 +44,13 @@
     aspect-ratio: 3/4;
     display: flex;
     flex-flow: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
     gap: 20px;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     z-index: 0;
-    padding: 50px 30px;
+    padding: 30px;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
@@ -77,8 +78,9 @@
 .itemResume {
     color: #FFF;
     font-size: 14px;
-    height: 5.5em;
+    height: 5.3em;
     overflow: hidden;
+    line-clamp: 4;
     -webkit-line-clamp: 4;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -102,5 +104,58 @@
 }
 
 .itemCTA:hover {
-    background: linear-gradient(0deg, rgba(80,80,80,1) 0%, rgba(17,17,17,1) 100%);
+    background: linear-gradient(0deg, rgba(80, 80, 80, 1) 0%, rgba(17, 17, 17, 1) 100%);
+}
+
+#noSearch {
+    width: calc(100% - 50px);
+    max-width: 950px;
+    display: none;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    & h3 {
+        font-size: 28px;
+        font-weight: 700;
+    } & p {
+        font-size: 16px;
+        color: #646464;
+    }
+}
+
+@media (width <=880px) {
+    .itemDescription {
+        padding: 15px;
+    }
+}
+
+@media (width <=750px) and (width >=420px) {
+    .itemDescription {
+        gap: 10px;
+    }
+
+    .item h2 {
+        font-size: 18px;
+    }
+
+    .itemTags>p {
+        padding: 3px 5px;
+        font-size: 12px;
+    }
+
+    .itemResume {
+        font-size: 12px;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;
+        height: 3.7em;
+    }
+
+    .itemCTA {
+        padding: 5px 15px;
+
+        & p {
+            font-size: 12px;
+        }
+    }
 }
